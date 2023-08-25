@@ -358,7 +358,7 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_agregarConsolaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_agregarConsolaMouseClicked
-        if(tf_identificacion.getText().equals("") || tf_fabricante.getText().equals("") || (int) sp_duracion.getModel().getValue() < 0 || (int) sp_precio.getModel().getValue() <= 0 || tf_modelo.getText().equals("") || cb_tipo.getSelectedIndex() == -1){
+        if(tf_identificacion.getText().equals("") || tf_fabricante.getText().equals("") || (int) sp_duracion.getModel().getValue() < 0 || (int) sp_precio.getModel().getValue() <= 0 || tf_modelo.getText().equals("") || cb_tipo.getSelectedIndex() == -1 || validarIdentificacion(tf_identificacion.getText()) == false){
             JOptionPane.showMessageDialog(this, "Tiene que llenar bien todos los datos!");
         }
         else{
@@ -465,6 +465,30 @@ public class Main extends javax.swing.JFrame {
                 new Main().setVisible(true);
             }
         });
+    }
+    
+    public static boolean validarIdentificacion(String cadena){
+        boolean valido = true;
+        char ch = 0;
+        cadena = cadena.toLowerCase();
+        for (int i = 0; i < cadena.length(); i++) {
+            ch = cadena.charAt(i);
+            if(cadena.length() != 8){
+                valido = false;
+                break;
+            }
+            
+            if(i >= cadena.length()/2 && (ch < 97 || ch > 122)){
+                valido = false;
+                break;
+            }
+            
+            if(i < cadena.length()/2 && (ch < 48 || ch > 57)){
+                valido = false;
+                break;
+            }
+        }
+        return valido;
     }
     
     ArrayList<Juego> juegos = new ArrayList();
