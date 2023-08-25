@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -283,16 +284,7 @@ public class Main extends javax.swing.JFrame {
 
         tb_tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "Identificacion", "Fabricante", "Uso", "Precio", "Modelo", "Tipo"
@@ -395,6 +387,10 @@ public class Main extends javax.swing.JFrame {
                     (int) sp_duracion.getModel().getValue(), estuche, tf_identificacion.getText(), tf_fabricante.getText(),
                     (int) sp_años.getModel().getValue(), (int) sp_precio.getModel().getValue(), tf_modelo.getText());
             consolas.add(c);
+            DefaultTableModel modelo = (DefaultTableModel) tb_tabla.getModel();
+            Object[] ob = {tf_identificacion.getText(),tf_fabricante.getText(),sp_años.getModel().getValue(),sp_precio.getModel().getValue(),tf_modelo.getText(),c.toString()};
+            modelo.addRow(ob);
+            tb_tabla.setModel(modelo);
             
             tf_identificacion.setText("");
             tf_fabricante.setText("");
@@ -418,6 +414,10 @@ public class Main extends javax.swing.JFrame {
             tf_identificacion.getText(), tf_fabricante.getText(),
             (int) sp_años.getModel().getValue(), (int) sp_precio.getModel().getValue(), tf_modelo.getText());
             consolas.add(c);
+            DefaultTableModel modelo = (DefaultTableModel) tb_tabla.getModel();
+            Object[] ob = {tf_identificacion.getText(),tf_fabricante.getText(),sp_años.getModel().getValue(),sp_precio.getModel().getValue(),tf_modelo.getText(),c.toString()};
+            modelo.addRow(ob);
+            tb_tabla.setModel(modelo);
             
             tf_identificacion.setText("");
             tf_fabricante.setText("");

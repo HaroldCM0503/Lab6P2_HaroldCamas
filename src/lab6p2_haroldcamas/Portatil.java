@@ -41,6 +41,6 @@ public class Portatil extends Consola{
 
     @Override
     public String toString() {
-        return "Portatil " + super.toString();
+        return "Portatil";
     }
 }

@@ -41,6 +41,6 @@ public class Estacionaria extends Consola{
 
     @Override
     public String toString() {
-        return "Estacionaria " + super.toString();
+        return "Estacionaria";
     }
 }
