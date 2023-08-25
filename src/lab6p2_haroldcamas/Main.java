@@ -45,6 +45,39 @@ public class Main extends javax.swing.JFrame {
         sp_controles = new javax.swing.JSpinner();
         tf_conexion = new javax.swing.JTextField();
         bt_agregarEstacionaria = new javax.swing.JButton();
+        pop_opcionesTabla = new javax.swing.JPopupMenu();
+        mni_añadirJuego = new javax.swing.JMenuItem();
+        mni_modificarConsola = new javax.swing.JMenuItem();
+        mni_eliminarConsola = new javax.swing.JMenuItem();
+        pop_opcionesLista = new javax.swing.JPopupMenu();
+        mni_modificarJuego = new javax.swing.JMenuItem();
+        mni_eliminarJuego = new javax.swing.JMenuItem();
+        dl_añadirJuego = new javax.swing.JDialog();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        tf_nombre = new javax.swing.JTextField();
+        tf_descripcion = new javax.swing.JTextField();
+        dc_lanzamiento = new com.toedter.calendar.JDateChooser();
+        sp_precioJuego = new javax.swing.JSpinner();
+        rb_estadoNuevo = new javax.swing.JRadioButton();
+        rb_estadoUsado = new javax.swing.JRadioButton();
+        rb_rentableSi = new javax.swing.JRadioButton();
+        rb_rentableNo = new javax.swing.JRadioButton();
+        rb_agregadoSi = new javax.swing.JRadioButton();
+        rb_agregadoNo = new javax.swing.JRadioButton();
+        sp_cantidad = new javax.swing.JSpinner();
+        bt_agregarJuego = new javax.swing.JButton();
+        btG_estado = new javax.swing.ButtonGroup();
+        btG_rentable = new javax.swing.ButtonGroup();
+        btG_agregado = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -178,6 +211,169 @@ public class Main extends javax.swing.JFrame {
                 .addGap(32, 32, 32))
         );
 
+        mni_añadirJuego.setText("Añadir Juego");
+        mni_añadirJuego.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mni_añadirJuegoActionPerformed(evt);
+            }
+        });
+        pop_opcionesTabla.add(mni_añadirJuego);
+
+        mni_modificarConsola.setText("Modificar Consola");
+        pop_opcionesTabla.add(mni_modificarConsola);
+
+        mni_eliminarConsola.setText("Eliminar Consola");
+        pop_opcionesTabla.add(mni_eliminarConsola);
+
+        mni_modificarJuego.setText("Modificar Juego");
+        pop_opcionesLista.add(mni_modificarJuego);
+
+        mni_eliminarJuego.setText("Eliminar Juego");
+        pop_opcionesLista.add(mni_eliminarJuego);
+
+        jLabel13.setText("Nombre");
+
+        jLabel14.setText("Descripcion");
+
+        jLabel15.setText("Añadir Juego");
+
+        jLabel16.setText("Lanzamiento");
+
+        jLabel17.setText("Precio");
+
+        jLabel18.setText("Estado");
+
+        jLabel19.setText("Rentable");
+
+        jLabel20.setText("Agregado");
+
+        jLabel21.setText("Cantidad");
+
+        btG_estado.add(rb_estadoNuevo);
+        rb_estadoNuevo.setText("Nuevo");
+
+        btG_estado.add(rb_estadoUsado);
+        rb_estadoUsado.setText("Usado");
+
+        btG_rentable.add(rb_rentableSi);
+        rb_rentableSi.setText("Si");
+
+        btG_rentable.add(rb_rentableNo);
+        rb_rentableNo.setText("No");
+
+        btG_agregado.add(rb_agregadoSi);
+        rb_agregadoSi.setText("Si");
+
+        btG_agregado.add(rb_agregadoNo);
+        rb_agregadoNo.setText("No");
+
+        bt_agregarJuego.setText("Agregar");
+        bt_agregarJuego.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_agregarJuegoMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel16)
+                            .addComponent(jLabel17)
+                            .addComponent(jLabel18)
+                            .addComponent(jLabel19)
+                            .addComponent(jLabel20)
+                            .addComponent(jLabel21))
+                        .addGap(50, 50, 50)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(dc_lanzamiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(sp_precioJuego)
+                                .addComponent(tf_descripcion)
+                                .addComponent(tf_nombre))
+                            .addComponent(rb_estadoNuevo)
+                            .addComponent(rb_rentableSi)
+                            .addComponent(rb_agregadoSi)
+                            .addComponent(sp_cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rb_estadoUsado, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(rb_rentableNo, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(rb_agregadoNo, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(165, 165, 165)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bt_agregarJuego)
+                            .addComponent(jLabel15))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel15)
+                .addGap(24, 24, 24)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(tf_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(tf_descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel16)
+                    .addComponent(dc_lanzamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel17)
+                    .addComponent(sp_precioJuego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel18)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(rb_estadoNuevo)
+                        .addComponent(rb_estadoUsado)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel19)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(rb_rentableSi)
+                        .addComponent(rb_rentableNo)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel20)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(rb_agregadoSi)
+                        .addComponent(rb_agregadoNo)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel21)
+                    .addComponent(sp_cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addComponent(bt_agregarJuego)
+                .addContainerGap(35, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout dl_añadirJuegoLayout = new javax.swing.GroupLayout(dl_añadirJuego.getContentPane());
+        dl_añadirJuego.getContentPane().setLayout(dl_añadirJuegoLayout);
+        dl_añadirJuegoLayout.setHorizontalGroup(
+            dl_añadirJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        dl_añadirJuegoLayout.setVerticalGroup(
+            dl_añadirJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
@@ -305,9 +501,19 @@ public class Main extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tb_tabla.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tb_tablaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tb_tabla);
 
         jl_juegos.setModel(new DefaultListModel());
+        jl_juegos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jl_juegosMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jl_juegos);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -432,6 +638,65 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_bt_agregarEstacionariaMouseClicked
 
+    private void tb_tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_tablaMouseClicked
+        if(evt.getButton() == 3){
+            pop_opcionesTabla.show(evt.getComponent(), evt.getX(), evt.getY());
+        }
+    }//GEN-LAST:event_tb_tablaMouseClicked
+
+    private void mni_añadirJuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mni_añadirJuegoActionPerformed
+        dl_añadirJuego.pack();
+        dl_añadirJuego.setModal(true);
+        dl_añadirJuego.setLocationRelativeTo(this);
+        dl_añadirJuego.setVisible(true);
+        dl_añadirJuego.setAlwaysOnTop(true); 
+        DefaultTableModel m = (DefaultTableModel)tb_tabla.getModel();
+        consola_seleccionada = encontrarEnTabla(tb_tabla.getSelectedRow());
+    }//GEN-LAST:event_mni_añadirJuegoActionPerformed
+
+    private void jl_juegosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_juegosMouseClicked
+        if(evt.getButton() == 3){
+            pop_opcionesLista.show(evt.getComponent(), evt.getX(), evt.getY());
+        }
+    }//GEN-LAST:event_jl_juegosMouseClicked
+
+    private void bt_agregarJuegoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_agregarJuegoMouseClicked
+        if(tf_nombre.getText().equals("") || tf_descripcion.getText().equals("") || dc_lanzamiento.getDate() == null || (int)sp_precioJuego.getModel().getValue() == 0 || btG_rentable.getSelection() == null || btG_agregado.getSelection() == null || btG_estado.getSelection() == null || (int)sp_cantidad.getModel().getValue() == 0){
+            JOptionPane.showMessageDialog(dl_añadirJuego, "Tiene que llenar las casillas!");
+        }
+        else{
+            boolean estado = true;
+            boolean rentable = true;
+            boolean agregado = true;
+            if(btG_estado.isSelected(rb_estadoNuevo.getModel())){
+                estado = true;
+            }
+            else{
+                estado = false;
+            } 
+            
+            if(btG_rentable.isSelected(rb_rentableSi.getModel())){
+                rentable = true;
+            }
+            else{
+                rentable = false;
+            }
+            
+            if(btG_agregado.isSelected(rb_agregadoSi.getModel())){
+                agregado = true;
+            }
+            else{
+                agregado = false;
+            }
+            
+            Juego j = new Juego(tf_nombre.getText(),tf_descripcion.getText(),dc_lanzamiento.getDate(),(int) sp_precioJuego.getModel().getValue(),
+            estado,rentable,agregado,(int) sp_cantidad.getModel().getValue());
+            juegos.add(j);
+            consola_seleccionada.getVideojuegos().add(j);
+            JOptionPane.showMessageDialog(dl_añadirJuego, "Juego añadido exitosamente!");
+        }
+    }//GEN-LAST:event_bt_agregarJuegoMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -491,22 +756,49 @@ public class Main extends javax.swing.JFrame {
         return valido;
     }
     
-    ArrayList<Juego> juegos = new ArrayList();
-    ArrayList<Consola> consolas = new ArrayList();
+    public static Consola encontrarEnTabla(int r){
+        Consola c = new Consola();
+        for (Consola consola : consolas) {
+            if(consolas.indexOf(consola) == r){
+                c = consola;
+            }
+        }
+        return c;
+    }
+    
+    static Consola consola_seleccionada = new Consola();
+    static Juego juego_seleccionada = new Juego();
+    static ArrayList<Juego> juegos = new ArrayList();
+    static ArrayList<Consola> consolas = new ArrayList();
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup btG_agregado;
+    private javax.swing.ButtonGroup btG_estado;
+    private javax.swing.ButtonGroup btG_rentable;
     private javax.swing.JButton bt_agregarConsola;
     private javax.swing.JButton bt_agregarEstacionaria;
+    private javax.swing.JButton bt_agregarJuego;
     private javax.swing.JButton bt_agregarPortatil;
     private javax.swing.JComboBox<String> cb_estuche;
     private javax.swing.JComboBox<String> cb_tamaño;
     private javax.swing.JComboBox<String> cb_tipo;
+    private com.toedter.calendar.JDateChooser dc_lanzamiento;
+    private javax.swing.JDialog dl_añadirJuego;
     private javax.swing.JDialog dl_opcionesEstacionaria;
     private javax.swing.JDialog dl_opcionesPortatil;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -516,18 +808,36 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JList<String> jl_juegos;
+    private javax.swing.JMenuItem mni_añadirJuego;
+    private javax.swing.JMenuItem mni_eliminarConsola;
+    private javax.swing.JMenuItem mni_eliminarJuego;
+    private javax.swing.JMenuItem mni_modificarConsola;
+    private javax.swing.JMenuItem mni_modificarJuego;
+    private javax.swing.JPopupMenu pop_opcionesLista;
+    private javax.swing.JPopupMenu pop_opcionesTabla;
+    private javax.swing.JRadioButton rb_agregadoNo;
+    private javax.swing.JRadioButton rb_agregadoSi;
+    private javax.swing.JRadioButton rb_estadoNuevo;
+    private javax.swing.JRadioButton rb_estadoUsado;
+    private javax.swing.JRadioButton rb_rentableNo;
+    private javax.swing.JRadioButton rb_rentableSi;
     private javax.swing.JSpinner sp_almacenamiento;
     private javax.swing.JSpinner sp_años;
+    private javax.swing.JSpinner sp_cantidad;
     private javax.swing.JSpinner sp_controles;
     private javax.swing.JSpinner sp_duracion;
     private javax.swing.JSpinner sp_precio;
+    private javax.swing.JSpinner sp_precioJuego;
     private javax.swing.JTable tb_tabla;
     private javax.swing.JTextField tf_conexion;
+    private javax.swing.JTextField tf_descripcion;
     private javax.swing.JTextField tf_fabricante;
     private javax.swing.JTextField tf_identificacion;
     private javax.swing.JTextField tf_modelo;
+    private javax.swing.JTextField tf_nombre;
     // End of variables declaration//GEN-END:variables
 }
