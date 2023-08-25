@@ -649,10 +649,20 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_agregarEstacionariaMouseClicked
 
     private void tb_tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_tablaMouseClicked
+        consola_seleccionada = encontrarEnTabla(tb_tabla.getSelectedRow());
         if(evt.getButton() == 3 && tb_tabla.getSelectedRow() != -1){
             pop_opcionesTabla.show(evt.getComponent(), evt.getX(), evt.getY());
         }
-        consola_seleccionada = encontrarEnTabla(tb_tabla.getSelectedRow());
+        
+        DefaultListModel ml = (DefaultListModel) jl_juegos.getModel();
+        ml.removeAllElements();
+        int cc = 0;
+
+        for (Juego v : consola_seleccionada.getVideojuegos()) {
+            ml.add(cc, v.toString());
+        }
+        jl_juegos.setModel(ml);
+        
     }//GEN-LAST:event_tb_tablaMouseClicked
 
     private void mni_añadirJuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mni_añadirJuegoActionPerformed
@@ -716,6 +726,15 @@ public class Main extends javax.swing.JFrame {
             rb_rentableSi.setSelected(false);
             sp_cantidad.getModel().setValue(0);
             dl_añadirJuego.setVisible(false);
+            
+            DefaultListModel ml = (DefaultListModel) jl_juegos.getModel();
+            ml.removeAllElements();
+            int cc = 0;
+
+            for (Juego v : consola_seleccionada.getVideojuegos()) {
+                ml.add(cc, v.toString());
+            }
+            jl_juegos.setModel(ml);
         }
     }//GEN-LAST:event_bt_agregarJuegoMouseClicked
 
@@ -724,6 +743,7 @@ public class Main extends javax.swing.JFrame {
         DefaultTableModel m = (DefaultTableModel) tb_tabla.getModel();
         m.removeRow(indice);
         consolas.remove(consola_seleccionada);
+        ((DefaultListModel) jl_juegos.getModel()).removeAllElements();
         JOptionPane.showMessageDialog(this, "Eliminado Exitosamente!");
     }//GEN-LAST:event_mni_eliminarConsolaActionPerformed
 

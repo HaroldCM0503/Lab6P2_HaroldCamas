@@ -7,7 +7,7 @@ public class Consola {
     private String fabricante;
     private int años;
     private int precio;
-    private ArrayList videojuegos = new ArrayList();
+    private ArrayList<Juego> videojuegos = new ArrayList();
     private String modelo;
 
     public Consola() {
@@ -53,7 +53,7 @@ public class Consola {
         this.precio = precio;
     }
 
-    public ArrayList getVideojuegos() {
+    public ArrayList<Juego> getVideojuegos() {
         return videojuegos;
     }
 
