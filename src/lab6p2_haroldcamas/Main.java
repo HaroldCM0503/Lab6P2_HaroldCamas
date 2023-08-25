@@ -1,6 +1,10 @@
 package lab6p2_haroldcamas;
 
+import java.awt.Dialog;
+import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -31,6 +35,7 @@ public class Main extends javax.swing.JFrame {
         sp_duracion = new javax.swing.JSpinner();
         jLabel9 = new javax.swing.JLabel();
         cb_estuche = new javax.swing.JComboBox<>();
+        bt_agregarPortatil = new javax.swing.JButton();
         dl_opcionesEstacionaria = new javax.swing.JDialog();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -38,6 +43,7 @@ public class Main extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         sp_controles = new javax.swing.JSpinner();
         tf_conexion = new javax.swing.JTextField();
+        bt_agregarEstacionaria = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -60,13 +66,20 @@ public class Main extends javax.swing.JFrame {
 
         jLabel7.setText("Tamaño");
 
-        cb_tamaño.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_tamaño.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pequeña", "Mediana", "Grande" }));
 
         jLabel8.setText("Duracion");
 
         jLabel9.setText("Estuche");
 
-        cb_estuche.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_estuche.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Con Estuche", "Sin Estuche" }));
+
+        bt_agregarPortatil.setText("Agregar");
+        bt_agregarPortatil.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_agregarPortatilMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout dl_opcionesPortatilLayout = new javax.swing.GroupLayout(dl_opcionesPortatil.getContentPane());
         dl_opcionesPortatil.getContentPane().setLayout(dl_opcionesPortatilLayout);
@@ -78,13 +91,17 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addComponent(jLabel8)
                     .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(dl_opcionesPortatilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dl_opcionesPortatilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(cb_tamaño, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(sp_duracion))
                     .addComponent(cb_estuche, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34))
+            .addGroup(dl_opcionesPortatilLayout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addComponent(bt_agregarPortatil)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         dl_opcionesPortatilLayout.setVerticalGroup(
             dl_opcionesPortatilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,7 +118,9 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(dl_opcionesPortatilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(cb_estuche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addComponent(bt_agregarPortatil)
+                .addGap(29, 29, 29))
         );
 
         jLabel10.setText("Controles");
@@ -110,9 +129,10 @@ public class Main extends javax.swing.JFrame {
 
         jLabel12.setText("Conexion");
 
-        tf_conexion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_conexionActionPerformed(evt);
+        bt_agregarEstacionaria.setText("Agregar");
+        bt_agregarEstacionaria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_agregarEstacionariaMouseClicked(evt);
             }
         });
 
@@ -132,6 +152,10 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(sp_controles, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(tf_conexion))
                 .addGap(34, 34, 34))
+            .addGroup(dl_opcionesEstacionariaLayout.createSequentialGroup()
+                .addGap(82, 82, 82)
+                .addComponent(bt_agregarEstacionaria)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         dl_opcionesEstacionariaLayout.setVerticalGroup(
             dl_opcionesEstacionariaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,7 +172,9 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(dl_opcionesEstacionariaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(tf_conexion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addComponent(bt_agregarEstacionaria)
+                .addGap(32, 32, 32))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -182,7 +208,14 @@ public class Main extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Modelo");
 
+        cb_tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Portatil", "Estacionaria" }));
+
         bt_agregarConsola.setText("Agregar Consola");
+        bt_agregarConsola.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_agregarConsolaMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -324,9 +357,80 @@ public class Main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tf_conexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_conexionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tf_conexionActionPerformed
+    private void bt_agregarConsolaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_agregarConsolaMouseClicked
+        if(tf_identificacion.getText().equals("") || tf_fabricante.getText().equals("") || (int) sp_duracion.getModel().getValue() < 0 || (int) sp_precio.getModel().getValue() <= 0 || tf_modelo.getText().equals("") || cb_tipo.getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(this, "Tiene que llenar bien todos los datos!");
+        }
+        else{
+            if(cb_tipo.getSelectedIndex() == 0){
+                dl_opcionesPortatil.pack();
+                dl_opcionesPortatil.setModal(true);
+                dl_opcionesPortatil.setLocationRelativeTo(this);
+                dl_opcionesPortatil.setVisible(true);
+                dl_opcionesPortatil.setAlwaysOnTop(true); 
+            }
+            else{
+                dl_opcionesEstacionaria.pack();
+                dl_opcionesEstacionaria.setModal(true);
+                dl_opcionesEstacionaria.setLocationRelativeTo(this);
+                dl_opcionesEstacionaria.setVisible(true);
+                dl_opcionesEstacionaria.setAlwaysOnTop(true); 
+            }
+        }
+    }//GEN-LAST:event_bt_agregarConsolaMouseClicked
+
+    private void bt_agregarPortatilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_agregarPortatilMouseClicked
+        if(cb_tamaño.getSelectedIndex() == -1 || cb_estuche.getSelectedIndex() == -1 || (int) sp_duracion.getModel().getValue() <= 0){
+            JOptionPane.showMessageDialog(dl_opcionesPortatil, "Tiene que llenar las casillas!");
+        }
+        else{
+            boolean estuche = true;
+            if(cb_estuche.getSelectedIndex() == 0){
+                estuche = true;
+            }
+            else{
+                estuche = false;
+            }
+            Consola c = new Portatil((String) cb_tamaño.getSelectedItem(), 
+                    (int) sp_duracion.getModel().getValue(), estuche, tf_identificacion.getText(), tf_fabricante.getText(),
+                    (int) sp_años.getModel().getValue(), (int) sp_precio.getModel().getValue(), tf_modelo.getText());
+            consolas.add(c);
+            
+            tf_identificacion.setText("");
+            tf_fabricante.setText("");
+            sp_años.getModel().setValue(0);
+            sp_precio.getModel().setValue(0);
+            tf_modelo.setText("");
+            cb_tamaño.setSelectedIndex(-1);
+            cb_estuche.setSelectedIndex(-1);
+            sp_duracion.getModel().setValue(0);
+            JOptionPane.showMessageDialog(dl_opcionesPortatil, "Agregado exitosamente!");
+            dl_opcionesPortatil.setVisible(false);
+        }
+    }//GEN-LAST:event_bt_agregarPortatilMouseClicked
+
+    private void bt_agregarEstacionariaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_agregarEstacionariaMouseClicked
+        if((int)sp_controles.getModel().getValue() == 0 || (int) sp_almacenamiento.getModel().getValue() == 0 || tf_conexion.getText().equals("")){
+            JOptionPane.showMessageDialog(dl_opcionesEstacionaria, "Tiene que llenar las casillas!");
+        }
+        else{
+            Consola c = new Estacionaria((int)sp_controles.getModel().getValue(),(int) sp_almacenamiento.getModel().getValue(),tf_conexion.getText(),
+            tf_identificacion.getText(), tf_fabricante.getText(),
+            (int) sp_años.getModel().getValue(), (int) sp_precio.getModel().getValue(), tf_modelo.getText());
+            consolas.add(c);
+            
+            tf_identificacion.setText("");
+            tf_fabricante.setText("");
+            sp_años.getModel().setValue(0);
+            sp_precio.getModel().setValue(0);
+            tf_modelo.setText("");
+            sp_controles.getModel().setValue(0);
+            sp_almacenamiento.getModel().setValue(0);
+            tf_conexion.setText("");
+            JOptionPane.showMessageDialog(dl_opcionesEstacionaria, "Agregado exitosamente!");
+            dl_opcionesEstacionaria.setVisible(false);
+        }
+    }//GEN-LAST:event_bt_agregarEstacionariaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -362,9 +466,13 @@ public class Main extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    ArrayList<Juego> juegos = new ArrayList();
+    ArrayList<Consola> consolas = new ArrayList();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_agregarConsola;
+    private javax.swing.JButton bt_agregarEstacionaria;
+    private javax.swing.JButton bt_agregarPortatil;
     private javax.swing.JComboBox<String> cb_estuche;
     private javax.swing.JComboBox<String> cb_tamaño;
     private javax.swing.JComboBox<String> cb_tipo;
