@@ -213,11 +213,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Modificar Consola"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mni_modificarConsolaActionPerformed"/>
+          </Events>
         </MenuItem>
         <MenuItem class="javax.swing.JMenuItem" name="mni_eliminarConsola">
           <Properties>
             <Property name="text" type="java.lang.String" value="Eliminar Consola"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mni_eliminarConsolaActionPerformed"/>
+          </Events>
         </MenuItem>
       </SubComponents>
     </Container>

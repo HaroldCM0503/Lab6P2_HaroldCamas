@@ -220,9 +220,19 @@ public class Main extends javax.swing.JFrame {
         pop_opcionesTabla.add(mni_añadirJuego);
 
         mni_modificarConsola.setText("Modificar Consola");
+        mni_modificarConsola.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mni_modificarConsolaActionPerformed(evt);
+            }
+        });
         pop_opcionesTabla.add(mni_modificarConsola);
 
         mni_eliminarConsola.setText("Eliminar Consola");
+        mni_eliminarConsola.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mni_eliminarConsolaActionPerformed(evt);
+            }
+        });
         pop_opcionesTabla.add(mni_eliminarConsola);
 
         mni_modificarJuego.setText("Modificar Juego");
@@ -639,9 +649,10 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_agregarEstacionariaMouseClicked
 
     private void tb_tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_tablaMouseClicked
-        if(evt.getButton() == 3){
+        if(evt.getButton() == 3 && tb_tabla.getSelectedRow() != -1){
             pop_opcionesTabla.show(evt.getComponent(), evt.getX(), evt.getY());
         }
+        consola_seleccionada = encontrarEnTabla(tb_tabla.getSelectedRow());
     }//GEN-LAST:event_tb_tablaMouseClicked
 
     private void mni_añadirJuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mni_añadirJuegoActionPerformed
@@ -650,8 +661,6 @@ public class Main extends javax.swing.JFrame {
         dl_añadirJuego.setLocationRelativeTo(this);
         dl_añadirJuego.setVisible(true);
         dl_añadirJuego.setAlwaysOnTop(true); 
-        DefaultTableModel m = (DefaultTableModel)tb_tabla.getModel();
-        consola_seleccionada = encontrarEnTabla(tb_tabla.getSelectedRow());
     }//GEN-LAST:event_mni_añadirJuegoActionPerformed
 
     private void jl_juegosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_juegosMouseClicked
@@ -694,8 +703,79 @@ public class Main extends javax.swing.JFrame {
             juegos.add(j);
             consola_seleccionada.getVideojuegos().add(j);
             JOptionPane.showMessageDialog(dl_añadirJuego, "Juego añadido exitosamente!");
+            
+            tf_nombre.setText("");
+            tf_descripcion.setText("");
+            dc_lanzamiento.setDate(null);
+            sp_precioJuego.getModel().setValue(0);
+            rb_estadoNuevo.setSelected(false);
+            rb_estadoUsado.setSelected(false);
+            rb_agregadoNo.setSelected(false);
+            rb_agregadoSi.setSelected(false);
+            rb_rentableNo.setSelected(false);
+            rb_rentableSi.setSelected(false);
+            sp_cantidad.getModel().setValue(0);
+            dl_añadirJuego.setVisible(false);
         }
     }//GEN-LAST:event_bt_agregarJuegoMouseClicked
+
+    private void mni_eliminarConsolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mni_eliminarConsolaActionPerformed
+        int indice = consolas.indexOf(consola_seleccionada);
+        DefaultTableModel m = (DefaultTableModel) tb_tabla.getModel();
+        m.removeRow(indice);
+        consolas.remove(consola_seleccionada);
+        JOptionPane.showMessageDialog(this, "Eliminado Exitosamente!");
+    }//GEN-LAST:event_mni_eliminarConsolaActionPerformed
+
+    private void mni_modificarConsolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mni_modificarConsolaActionPerformed
+        String identificacion = JOptionPane.showInputDialog("Ingrese la nueva identificacion:");
+        String fabricante = JOptionPane.showInputDialog("Ingrese el nuevo fabricante");
+        int años = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el nuevo uso de la consola"));
+        int precio = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el nuevo precio:"));
+        String modelo = JOptionPane.showInputDialog("Ingrese el nuevo modelo:");
+        
+        if(consola_seleccionada instanceof Portatil){
+            String tamaño = JOptionPane.showInputDialog("Ingrese el nuevo tamaño:");
+            int bateria = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la nueva duracion de la bateria"));
+            int option = JOptionPane.showConfirmDialog(this, "La consola viene con estuche?");
+            boolean estuche = false;
+            if(option == 0){
+                estuche = true;
+            }
+            
+            consola_seleccionada.setIdentificacion(identificacion);
+            consola_seleccionada.setFabricante(fabricante);
+            consola_seleccionada.setPrecio(precio);
+            consola_seleccionada.setModelo(modelo);
+            ((Portatil)consola_seleccionada).setTamaño(tamaño);
+            ((Portatil)consola_seleccionada).setBateria(bateria);
+            ((Portatil)consola_seleccionada).setEstuche(estuche);
+            JOptionPane.showMessageDialog(this, "Modificado Exitosamente!");
+        }
+        else{
+            int almacenamiento = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el nuevo almacenamiento:"));
+            int controles = Integer.parseInt(JOptionPane.showInputDialog("Ingrese los nuevos controles:"));
+            String conexion = JOptionPane.showInputDialog("Ingrese el nuevo tipo de conexion:");
+            
+            consola_seleccionada.setIdentificacion(identificacion);
+            consola_seleccionada.setFabricante(fabricante);
+            consola_seleccionada.setPrecio(precio);
+            consola_seleccionada.setModelo(modelo);
+            ((Estacionaria) consola_seleccionada).setAlmacenamiento(almacenamiento);
+            ((Estacionaria) consola_seleccionada).setControles(controles);
+            ((Estacionaria) consola_seleccionada).setConexion(conexion);
+            JOptionPane.showMessageDialog(this, "Modificado Exitosamente!");
+        }
+        
+        DefaultTableModel m = (DefaultTableModel) tb_tabla.getModel();
+        m.setValueAt(identificacion, tb_tabla.getSelectedRow(), 0);
+        m.setValueAt(fabricante, tb_tabla.getSelectedRow(), 1);
+        m.setValueAt(años, tb_tabla.getSelectedRow(), 2);
+        m.setValueAt(precio, tb_tabla.getSelectedRow(), 3);
+        m.setValueAt(modelo, tb_tabla.getSelectedRow(), 4);
+        m.setValueAt(consola_seleccionada.toString(), tb_tabla.getSelectedRow(), 5);
+        tb_tabla.setModel(m);
+    }//GEN-LAST:event_mni_modificarConsolaActionPerformed
 
     /**
      * @param args the command line arguments
