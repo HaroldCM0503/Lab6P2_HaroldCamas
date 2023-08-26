@@ -239,6 +239,11 @@ public class Main extends javax.swing.JFrame {
         pop_opcionesLista.add(mni_modificarJuego);
 
         mni_eliminarJuego.setText("Eliminar Juego");
+        mni_eliminarJuego.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mni_eliminarJuegoActionPerformed(evt);
+            }
+        });
         pop_opcionesLista.add(mni_eliminarJuego);
 
         jLabel13.setText("Nombre");
@@ -674,7 +679,8 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_mni_añadirJuegoActionPerformed
 
     private void jl_juegosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_juegosMouseClicked
-        if(evt.getButton() == 3){
+        juego_seleccionada = encontrarJuego(jl_juegos.getSelectedValue());
+        if(evt.getButton() == 3 && jl_juegos.getSelectedIndex() != -1){
             pop_opcionesLista.show(evt.getComponent(), evt.getX(), evt.getY());
         }
     }//GEN-LAST:event_jl_juegosMouseClicked
@@ -797,6 +803,27 @@ public class Main extends javax.swing.JFrame {
         tb_tabla.setModel(m);
     }//GEN-LAST:event_mni_modificarConsolaActionPerformed
 
+    private void mni_eliminarJuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mni_eliminarJuegoActionPerformed
+        int cantidad = juego_seleccionada.getCantidad();
+        
+        if(cantidad == 1){
+            consola_seleccionada.getVideojuegos().remove(juego_seleccionada);
+            juegos.remove(juego_seleccionada);
+        }
+        else{
+            juego_seleccionada.setCantidad(cantidad - 1);
+        }
+        
+        DefaultListModel ml = (DefaultListModel) jl_juegos.getModel();
+        ml.removeAllElements();
+        int cc = 0;
+
+        for (Juego v : consola_seleccionada.getVideojuegos()) {
+            ml.add(cc, v.toString());
+        }
+        jl_juegos.setModel(ml);
+    }//GEN-LAST:event_mni_eliminarJuegoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -864,6 +891,16 @@ public class Main extends javax.swing.JFrame {
             }
         }
         return c;
+    }
+    
+    public static Juego encontrarJuego(String str){
+        Juego j = new Juego();
+        for (Juego juego : juegos) {
+            if(juego.toString().equals(str)){
+                j = juego;
+            }
+        }
+        return j;
     }
     
     static Consola consola_seleccionada = new Consola();
