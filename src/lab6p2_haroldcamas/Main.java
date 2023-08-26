@@ -236,6 +236,11 @@ public class Main extends javax.swing.JFrame {
         pop_opcionesTabla.add(mni_eliminarConsola);
 
         mni_modificarJuego.setText("Modificar Juego");
+        mni_modificarJuego.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mni_modificarJuegoActionPerformed(evt);
+            }
+        });
         pop_opcionesLista.add(mni_modificarJuego);
 
         mni_eliminarJuego.setText("Eliminar Juego");
@@ -822,7 +827,53 @@ public class Main extends javax.swing.JFrame {
             ml.add(cc, v.toString());
         }
         jl_juegos.setModel(ml);
+        
+        JOptionPane.showMessageDialog(this, "Juego eliminado exitosamente!");
     }//GEN-LAST:event_mni_eliminarJuegoActionPerformed
+
+    private void mni_modificarJuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mni_modificarJuegoActionPerformed
+        String nombre = JOptionPane.showInputDialog("Ingrese el nuevo nombre");
+        String descripcion = JOptionPane.showInputDialog("Ingrese la nueva descripcion");
+        int precio = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el nuevo precio"));
+        
+        int option = 0;
+        boolean estado = false,rentable = false,agregado = false;
+        option = JOptionPane.showConfirmDialog(this, "El juego es nuevo?");
+        if(option == 0){
+            estado = true;
+        }
+        
+        option = JOptionPane.showConfirmDialog(this, "El juego es rentable?");
+        if(option == 0){
+            rentable = true;
+        }
+        
+        option = JOptionPane.showConfirmDialog(this, "El juego contiene agregado?");
+        if(option == 0){
+            agregado = true;
+        }
+        
+        int cantidad = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la nueva cantidad:"));
+        
+        juego_seleccionada.setNombre(nombre);
+        juego_seleccionada.setDescripcion(descripcion);
+        juego_seleccionada.setPrecio(precio);
+        juego_seleccionada.setEstado(estado);
+        juego_seleccionada.setRentable(rentable);
+        juego_seleccionada.setAgregado(agregado);
+        juego_seleccionada.setCantidad(cantidad);
+        
+        DefaultListModel ml = (DefaultListModel) jl_juegos.getModel();
+        ml.removeAllElements();
+        int cc = 0;
+
+        for (Juego v : consola_seleccionada.getVideojuegos()) {
+            ml.add(cc, v.toString());
+        }
+        jl_juegos.setModel(ml);
+        
+        JOptionPane.showMessageDialog(this, "Juego modificado exitosamente!");
+    }//GEN-LAST:event_mni_modificarJuegoActionPerformed
 
     /**
      * @param args the command line arguments
